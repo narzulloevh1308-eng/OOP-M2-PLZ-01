@@ -1,0 +1,23 @@
+# Диаграмма классов системы классификации грибов
+
+```mermaid
+classDiagram
+    class Sample {
+        +float feature_1
+        +float feature_2
+        +float feature_3
+        +float feature_4
+        +str label
+    }
+
+    class TrainingData {
+        +str name
+        +datetime uploaded
+        +datetime tested
+        +int k
+        +list~Sample~ training
+        +list~Sample~ testing
+    }
+
+    TrainingData "1" o-- "*" Sample : training
+    TrainingData "1" o-- "*" Sample : testing
