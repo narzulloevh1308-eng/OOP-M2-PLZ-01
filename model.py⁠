@@ -1,0 +1,25 @@
+from dataclasses import dataclass, field
+import datetime
+
+
+@dataclass
+class Sample:
+    """Один измеренный образец гриба."""
+
+    cap_diameter: float   # диаметр шляпки (см)
+    stem_height: float    # высота ножки (см)
+    stem_thickness: float # толщина ножки (мм)
+    mass: float           # масса (г)
+    label: str | None = None   # вид гриба или None
+
+
+@dataclass
+class TrainingData:
+    """Обучающие и тестовые данные для классификации грибов."""
+
+    name: str
+    uploaded: datetime.datetime | None = None
+    tested: datetime.datetime | None = None
+    k: int = 1
+    training: list[Sample] = field(default_factory=list)
+    testing: list[Sample] = field(default_factory=list)
